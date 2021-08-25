@@ -19,8 +19,8 @@ Route::get('/register',[UserAuthController::class,'register'])->name('register')
 Route::post('/create',[UserAuthController::class,'create'])->name('auth.create');
 Route::post('/check',[UserAuthController::class,'check'])->name('auth.check');
 Route::get('/logout',[UserAuthController::class,'logout'])->name('logout');
-
-Route::group(['middleware'=>['userAuth']], function () {
-    Route::get('/profile',[UserAuthController::class,'profile'])->name('profile');
-});
+Route::get('/profile',[UserAuthController::class,'profile'])->name('profile');
+// Route::group(['middleware'=>['userAuth']], function () {
+//     Route::get('/profile',[UserAuthController::class,'profile'])->name('profile');
+// });
 
