@@ -66,8 +66,8 @@ class TaskController extends Controller
 
     public function profile()
     {
-        $tasks = Task::where('user_id',Auth::id())->get();
-        return view('admin.profile', compact('tasks'));
+        $tasks = Task::where('user_id','=',auth()->user()->id)->get();
+        return view('admin.profile', ['tasks'=>$tasks]);
     }
 
 }
