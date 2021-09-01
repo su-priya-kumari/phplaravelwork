@@ -2,9 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserAuthController;
+
 use App\Http\Controllers\TaskController;
-use App\Http\Controllers\UserApiControoler;
+use App\Http\Controllers\UserApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,15 +18,12 @@ use App\Http\Controllers\UserApiControoler;
 */
 
 
-Route::post('/register', [UserApiControoler::class,'register']);
-Route::post('/login', [UserApiControoler::class,'login']);
-
+Route::post('/login',[UserApiController::class,'login']);
+Route::post('/register',[UserApiController::class,'register']);
 
 Route::group(['middleware' =>['auth:sanctum']], function() {
-    Route::post('/task/add', [TaskController::class,'store']);
-    Route::post('/task/status/{id}', [TaskController::class, 'update']);
-    Route::post('/logout', [UserApiControoler::class,'logout']);
-
+    Route::post('/api/task/add', [TaskController::class,'store']);
+    Route::post('/api/task/status/{id}', [TaskController::class, 'update']);
 });
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

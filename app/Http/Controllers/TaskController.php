@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\Http\Controllers\UserAuthController;
+
 use App\Models\Task;
 use App\Models\User;
 use Auth;
@@ -62,6 +62,12 @@ class TaskController extends Controller
                 'success' => false,
                 'message' => 'Post can not be updated'
             ], 500);
+    }
+
+    public function profile()
+    {
+        $tasks = Task::where('user_id',Auth::id())->get();
+        return view('admin.profile', compact('tasks'));
     }
 
 }

@@ -12,8 +12,8 @@
         <div class="container">
             <a href="#" class="navbar-brand"></a>
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a href="{{ route('login') }}" class="nav-link text-white">Login</a></li>     
-                <li class="nav-item"><a href="{{ route('register') }}" class="nav-link text-white">Register</a></li>     
+                <li class="nav-item"><a href="{{ route('loginpage') }}" class="nav-link text-white">Login</a></li>     
+                <li class="nav-item"><a href="{{ route('registerpage') }}" class="nav-link text-white">Register</a></li>     
             </ul>
         </div>
     </nav>

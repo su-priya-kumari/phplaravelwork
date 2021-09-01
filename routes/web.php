@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserAuthController;
+
+use App\Http\Controllers\TaskController;
+use App\Http\Controllers\UserApiController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,14 +15,17 @@ use App\Http\Controllers\UserAuthController;
 |
 */
 
-Route::get('/',[UserAuthController::class,'index'])->name('index');
-Route::get('/login',[UserAuthController::class,'login'])->name('login');
-Route::get('/register',[UserAuthController::class,'register'])->name('register');
-Route::post('/create',[UserAuthController::class,'create'])->name('auth.create');
-Route::post('/check',[UserAuthController::class,'check'])->name('auth.check');
-Route::get('/logout',[UserAuthController::class,'logout'])->name('logout');
-Route::get('/profile',[UserAuthController::class,'profile'])->name('profile');
-// Route::group(['middleware'=>['userAuth']], function () {
-//     Route::get('/profile',[UserAuthController::class,'profile'])->name('profile');
-// });
+Route::get('/',[UserApiController::class,'index'])->name('index');
+Route::get('/loginpage',[UserApiController::class,'loginpage'])->name('loginpage');
+Route::get('/registerpage',[UserApiController::class,'registerpage'])->name('registerpage');
+Route::post('/register',[UserApiController::class,'register'])->name('register');
+Route::post('/login',[UserApiController::class,'login'])->name('login');
+
+
+Route::group(['middleware'=>['userAuth']], function () {
+    Route::get('/profile',[TaskController::class,'profile'])->name('profile');
+    Route::post('/task/add', [TaskController::class,'store']);
+    Route::post('/task/status/{id}', [TaskController::class, 'update']);
+    Route::get('/logout',[UserApiController::class,'logout'])->name('logout');
+});
 

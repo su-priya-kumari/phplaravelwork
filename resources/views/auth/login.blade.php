@@ -13,7 +13,7 @@
            <div class="col-md-4 col-md-offset-4 mx-auto">
                <h4>User Login</h4>
                <hr>
-               <form action="{{ route('auth.check') }}" method="post">
+               <form action="{{ route('login') }}" method="post">
                    @csrf
                    <div class="results">
                     @if (Session::get('fail'))
@@ -36,7 +36,7 @@
                        <button type="submit" class="btn btn-primary btn-block">Login</button>
                    </div>
                    <hr>
-                   <a href="register">Create an new account?</a>
+                   <a href="{{ route('registerpage') }}">Create an new account?</a>
                </form>
            </div>
        </div>

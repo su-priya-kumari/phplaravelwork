@@ -13,7 +13,7 @@
            <div class="col-md-4 col-md-offset-4 mx-auto">
                <h4>Register Page</h4>
                <hr>
-               <form action="{{route('auth.create')}}" method="post">
+               <form action="{{route('register')}}" method="post">
                    @csrf
                    <div class="results">
                        @if (Session::get('success'))
@@ -46,7 +46,7 @@
                        <button type="submit" class="btn btn-primary btn-block">Regiter</button>
                    </div>
                    <hr>
-                   <a href="login">I have already account?</a>
+                   <a href="{{ route('loginpage') }}">I have already account?</a>
                </form>
            </div>
        </div>
